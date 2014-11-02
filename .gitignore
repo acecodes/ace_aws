@@ -5,3 +5,5 @@
 localtesting.py
 *test*.html
 *config.py
+.boto
+*.pem
