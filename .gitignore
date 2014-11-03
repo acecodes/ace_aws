@@ -1,6 +1,7 @@
 *.env
 *.pyc
 /__pycache__/
+/testing/
 *test*.py
 localtesting.py
 *test*.html
