@@ -24,3 +24,14 @@ def upload(bucket, *files):
 		for items in files:
 			# Rather than reinvent the wheel, use the Amazon CLI for directories
 			system("aws s3 cp {items} s3://{bucket}/ --recursive".format(bucket=bucket, items=items))
+
+def sync(src, dst, src_bucket=False):
+	"""
+	Sync S3 bucket or local directory with S3 bucket
+	"""
+	if src_bucket == False:
+		system("aws s3 sync {src} s3://{dst}".format(src=src, dst=dst))
+		print("Local directory '{src}' and S3 bucket '{dst}' synced successfully".format(src=src, dst=dst))
+	else:
+		system("aws s3 sync s3://{src} s3://{dst}".format(src=src, dst=dst))
+		print("S3 buckets '{src}' and '{dst}' synced successfully".format(src=src, dst=dst))
